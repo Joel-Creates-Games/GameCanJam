@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Puzzle" style="flex-grow: 1; position: absolute; width: 100%; height: 100%;">
+        <ui:Label tabindex="-1" text="Score:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Score" style="position: absolute; left: 3%; top: 5%; width: 27%; height: 6%; font-size: 50px;" />
+        <ui:Label tabindex="-1" text="Health:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Health" style="position: absolute; left: 3%; top: 15%; width: 27%; height: 6%; font-size: 50px;" />
+    </ui:VisualElement>
+    <ui:Button text="SWITCH" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SwitchButton" style="position: absolute; left: 85%; top: 85%; width: 12%; height: 13%; font-size: 42%; background-image: url(&apos;project://database/Assets/UI/Screenshot%202023-11-24%20232258.png?fileID=2800000&amp;guid=1369ca422ebc1c4429fd3c302d90151d&amp;type=3#Screenshot 2023-11-24 232258&apos;);" />
+    <ui:Button text="NEXT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextButton" style="position: absolute; left: 85%; top: 71%; width: 12%; height: 13%; font-size: 42%; background-image: url(&apos;project://database/Assets/UI/Screenshot%202023-11-24%20232258.png?fileID=2800000&amp;guid=1369ca422ebc1c4429fd3c302d90151d&amp;type=3#Screenshot 2023-11-24 232258&apos;);" />
+</ui:UXML>
