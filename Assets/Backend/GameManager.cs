@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Transform m_Grid;
     [SerializeField] Transform[] m_allFruits;
+    List<Transform> currentFruits = new List<Transform>();
+    public Transform SpawnPoints;
+    float m_enemySpawnTime = 10;
+    public GameObject Goblin;
+    bool m_GoblinSpawning = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +21,19 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (m_GoblinSpawning == false)
+        {
+            StartCoroutine(SpawnEnemy());
+        }
     }
 
     public void PlacePuzzle()
     {
+        for (int i = 0; i < currentFruits.Count; i++)
+        {
+            Destroy(currentFruits[i].gameObject);
+        }
+        currentFruits = new List<Transform>();
         int lastRandom = -1;
         for (int i = 0; i < m_Grid.childCount; i++)
         {
@@ -37,9 +50,23 @@ public class GameManager : MonoBehaviour
                     }
                     loopcount++;
                 }
-                Instantiate(m_allFruits[random], m_Grid.GetChild(i).GetChild(o).position, m_allFruits[random].rotation);
+                Transform newFruit = Instantiate(m_allFruits[random], m_Grid.GetChild(i).GetChild(o).position, m_allFruits[random].rotation);
+                currentFruits.Add(newFruit);
                 lastRandom = random;
             }
         }
+    }
+
+    IEnumerator SpawnEnemy()
+    {
+        m_GoblinSpawning = true;
+        yield return new WaitForSeconds(m_enemySpawnTime);
+        GameObject newGobbo = Instantiate(Goblin, SpawnPoints.GetChild(Random.Range(0, SpawnPoints.childCount)).position, Quaternion.identity);
+        newGobbo.SetActive(true);
+        if (m_enemySpawnTime > 2f)
+        {
+            m_enemySpawnTime -= 0.3f;
+        }
+        m_GoblinSpawning = false;
     }
 }

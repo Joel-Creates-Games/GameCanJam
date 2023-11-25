@@ -13,7 +13,19 @@
         "m_CodePreviewVisible": true,
         "m_OpenUXMLFiles": [
             {
-                "m_OpenUSSFiles": [],
+                "m_OpenUSSFiles": [
+                    {
+                        "m_StyleSheet": {
+                            "fileID": 7433441132597879392,
+                            "guid": "695c75505c02f45489f2d5de525f61d0",
+                            "type": 3
+                        },
+                        "m_BackupStyleSheet": {
+                            "instanceID": 0
+                        },
+                        "m_OldPath": "Assets/Button.uss"
+                    }
+                ],
                 "m_VisualTreeAssetBackup": {
                     "instanceID": 0
                 },
@@ -24,7 +36,9 @@
                     "type": 3
                 },
                 "m_ActiveStyleSheet": {
-                    "instanceID": 0
+                    "fileID": 7433441132597879392,
+                    "guid": "695c75505c02f45489f2d5de525f61d0",
+                    "type": 3
                 },
                 "m_Settings": {
                     "UxmlGuid": "c8a2ab2ce74110d41851efba521f1f94",
@@ -34,10 +48,10 @@
                     "CanvasWidth": 1920,
                     "CanvasHeight": 1080,
                     "MatchGameView": true,
-                    "ZoomScale": 0.30000001192092898,
+                    "ZoomScale": 0.25,
                     "PanOffset": {
-                        "x": 69.722900390625,
-                        "y": 96.98605346679688
+                        "x": 42.53118896484375,
+                        "y": 201.5946044921875
                     },
                     "ColorModeBackgroundOpacity": 1.0,
                     "ImageModeCanvasBackgroundOpacity": 1.0,

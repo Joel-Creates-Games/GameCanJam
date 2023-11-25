@@ -1,0 +1,20 @@
+.Button {
+    position: absolute;
+    left: 85%;
+    top: 71%;
+    width: 12%;
+    height: 13%;
+    font-size: 42%;
+    background-image: url('project://database/Assets/UI/Screenshot%202023-11-24%20232258.png?fileID=2800000&guid=1369ca422ebc1c4429fd3c302d90151d&type=3#Screenshot 2023-11-24 232258');
+}
+
+.Button:hover {
+    position: absolute;
+    left: 85%;
+    top: 71%;
+    width: 12%;
+    height: 13%;
+    font-size: 42%;
+    background-image: url('project://database/Assets/UI/Screenshot%202023-11-24%20232258.png?fileID=2800000&guid=1369ca422ebc1c4429fd3c302d90151d&type=3#Screenshot 2023-11-24 232258');
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.55);
+}
