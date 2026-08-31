@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements; //this
+using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour
 {
@@ -29,11 +29,13 @@ public class UIController : MonoBehaviour
     public Button m_tutorialButton;
 
     public VisualElement m_fps;
+
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 0;
         var root = GetComponent<UIDocument>().rootVisualElement;
+
         m_ScoreLabel = root.Q<Label>("Score");
         m_HealthLabel = root.Q<Label>("Health");
         m_puzzle = root.Q<VisualElement>("Puzzle");
@@ -50,7 +52,6 @@ public class UIController : MonoBehaviour
         m_tutorial = root.Q<VisualElement>("TutorialScreen");
         m_tutorialButton = root.Q<Button>("TutorialButton");
 
-
         m_SwitchButton.clicked += SwitchButtonClicked;
         m_NextButton.clicked += NextButtonClicked;
         m_MainMenuDeathButton.clicked += ToMainMenu;
@@ -58,8 +59,17 @@ public class UIController : MonoBehaviour
         m_openTutorial.clicked += OpenTutorial;
         m_leaveGameButton.clicked += LeaveGame;
         m_tutorialButton.clicked += ToMainMenu;
+
         m_fps.visible = false;
         m_tutorial.visible = false;
+
+        // Hide the exit button completely on WebGL since players can't "quit" a webpage
+#if UNITY_WEBGL
+        if (m_leaveGameButton != null)
+        {
+            m_leaveGameButton.style.display = DisplayStyle.None;
+        }
+#endif
     }
 
     // Update is called once per frame
@@ -85,7 +95,14 @@ public class UIController : MonoBehaviour
             m_camera.transform.rotation = Quaternion.Euler(90, 0, 0);
             m_camera.orthographic = true;
             UnityEngine.Cursor.visible = true;
+
+            // WebGL does not support Confined cursor lock mode
+#if UNITY_WEBGL
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+#else
             UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+#endif
+
             m_fps.visible = false;
             m_puzzle.visible = true;
         }
@@ -96,7 +113,13 @@ public class UIController : MonoBehaviour
         m_DeathScreen.visible = true;
         m_scoreLabel.text = "SCORE: " + score;
         UnityEngine.Cursor.visible = true;
+
+#if UNITY_WEBGL
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+#else
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+#endif
+
         Time.timeScale = 0;
     }
 
@@ -117,9 +140,14 @@ public class UIController : MonoBehaviour
         m_DeathScreen.visible = false;
         Time.timeScale = 1;
     }
+
     void LeaveGame()
     {
+#if UNITY_WEBGL
+        Debug.Log("Application.Quit() is not supported in WebGL.");
+#else
         Application.Quit();
+#endif
     }
 
     void OpenTutorial()
